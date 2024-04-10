@@ -3,13 +3,13 @@ clc
 close all hidden
 format short
 
-Am = input('Amplitud del mensaje: ');
-Ac = input('Amplitud de la portadora: ');
-fm = input('Valor de la frecuencia del mensaje: ');
-fc = input('Valor de la frecuencia de la portadora: ');
-b = input('Valor del índice de modulación: ');
-Fs = input('Ingrese la frecuencia de muestreo: ');
-t = 0:1/Fs:1; %1000 muestras
+Am = 1;     % Amplitud del mensaje
+Ac = 1;     % Amplitud de la portadora
+fm = 10;    % Frecuencia de mensaje
+fc = 100;   % Frecuencia de portadora
+b = 50;      % Indice de modulacion
+Fs = 5000;  % Frecuencia de muestreo
+t = 0:1/Fs:0.8; %1000 muestras
 
 % Mensaje
 msg = Am*sin(2*pi*fm*t);
@@ -20,7 +20,7 @@ ylabel('Amplitud');
 title('Mensaje sin Ruido');
 
 %Para añadir ruido al mensaje
-SNR = 1;
+SNR = 3;
 n_t = max(msg)/SNR.*rand(size(msg));
 rmsg = msg + n_t;
 
@@ -49,7 +49,7 @@ ylabel('Amplitud');
 title('Señal Modulada sin Ruido');
 
 %Para añadir ruido a la señal modulada
-SNR = 1;
+SNR = 3;
 n_t = max(y)/SNR.*rand(size(y));
 yr_t = y + n_t;
 
